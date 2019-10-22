@@ -1,0 +1,236 @@
+\documentclass[a4paper,twoside,12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{lmodern}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{decorations.pathmorphing}
+\usepgflibrary{arrows.meta}
+
+\usepackage{xcolor}
+\usepackage{sectsty}
+\usepackage{ccicons}
+\usepackage{enumitem}
+\usepackage{scrextend}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{navigator}
+\usepackage{letltxmacro}
+\usepackage{ifthen}
+\usepackage{graphicx}
+\usepackage{imakeidx}
+\makeindex[intoc]
+\usepackage{multicol}
+\usepackage[version=4]{mhchem}
+\usepackage{totcount}
+\usepackage{xmpincl}
+\includexmp{metadata}
+
+\usepackage[hidelinks,pdftex,bookmarks=true,
+            pdfauthor={Jed Moody <jed.moody@uon.edu.au>},
+            pdftitle={PHYS1220 Syllabus},
+            pdfsubject={Advanced Physics II},
+            pdfkeywords={Physics, 1220, Advanced, Notes}]{hyperref}
+
+\begin{document}
+  \definecolor{theme}{HTML}{383e79}
+  \definecolor{term}{HTML}{009b8e}
+  \definecolor{termref}{HTML}{008080}
+  \definecolor{correct}{HTML}{383e79}
+  % \definecolor{not}{HTML}{f7926a}
+  \definecolor{not}{HTML}{f68052}
+  \sectionfont{\color{theme}}
+  \graphicspath{{images/}}
+  \thispagestyle{empty}
+  \newif\ifinquestion
+  \inquestionfalse
+  \newtotcounter{question}
+  \setcounter{question}{0}
+  \pdfdef\term#1{#1}
+  \pdfdef\termnoindex#1{#1}
+  \pdfdef\refterm#1{#1}
+  \pdfdef\reftermnoindex#1{#1}
+  \pdfdef\ce#1{#1}
+  \pdfdef\ldots{...}
+  \pdfdef\textit#1{-#1-}
+  \pdfdef\mbox#1{#1}
+  \pdfdef\ref#1{#1}
+  \pdfdef\index#1{}
+  \pdfdef\beta{beta}
+  \pdfdef\textbf#1{*#1*}
+
+  \let\frac\dfrac % normal font size for \frac
+
+  \newcommand\figureruletop{%
+    {\bf%
+      \def\stuff{\makebox[0.4em][c]{/}}%
+      \tiny\color{theme}%
+      \stuff\leaders\hbox{\stuff}\hfill \hfil%
+    }\par
+  }
+  \newcommand\figureruletbottom{%
+    {\bf%
+      \def\stuff{\makebox[0.4em][c]{\textbackslash}}%
+      \tiny\color{theme}%
+      \stuff\leaders\hbox{\stuff}\hfill \hfil%
+    }\par
+  }
+  \newcommand\TODO[1]{%
+    \figureruletop
+
+    \texttt{\textcolor{gray}{/*}}\hfill%
+      \textbf{\textcolor{theme}{TODO}}: #1%
+    \hfill\texttt{\textcolor{gray}{*/}}%
+
+    \figureruletbottom
+  }
+
+  \newcommand\defcatagory[1]{%
+    \filbreak%
+    \outline{1}{#1}%
+    \section{#1}%
+    \nopagebreak[4]%
+  }
+  \newcommand\qtitle[1]{%
+    \outline{2}{#1}%
+    #1%
+    \nopagebreak%
+  }
+  \newenvironment{question}{%
+    \ifinquestion%
+      \ClassError{cie}{No nested questions please.}
+    \fi%
+    \refstepcounter{question}\label{q\thequestion}%
+    \inquestiontrue%
+    \noindent%
+    \begin{addmargin}[2em]{0em}
+      \makebox[0pt][r]{\tikz[baseline=(text.base)]{
+        \coordinate (box top left) at (0, 0);
+        \coordinate (box bottom right) at (3em, 1.2\baselineskip);
+        \path[use as bounding box] (box top left) rectangle (box bottom right);
+        \fill[opacity=0.05, theme] (box top left) rectangle (box bottom right) node[midway, anchor=center](textpoint){};
+        \node[anchor=center, text=theme](text) at (textpoint) {\arabic{question}};
+        \path[draw=theme, thick] let \p1 = (box top left), \p2 = (box bottom right) in (\p1) -- (\x2, \y1);
+      }\hspace{1em}}%
+  }{
+    \end{addmargin}
+    \inquestionfalse
+    \filbreak
+  }
+  \newcommand\term[2][]{%
+    \termnoindex[#1]{#2}%
+    \index{#2}%
+  }
+  \newcommand\termnoindex[2][]{%
+    \textit{\textbf{\textcolor{term}{#2}}}\label{\if\relax\detokenize{#1}\relax term:#2\else term:#1\fi}%
+  }
+  \newcommand\refterm[2][]{%
+    \reftermnoindex[#1]{#2}%
+    \index{#2}%
+  }
+  \makeatletter
+  \newcommand\reftermnoindex[2][]{%
+    \def\lab{\if\relax\detokenize{#1}\relax term:#2\else term:#1\fi}%
+    \@ifundefined{r@\lab}{%
+      % \textcolor{red}{\textit{#2}\textsuperscript{??}}%
+      \message{APD Warning: Ref to undefined term \lab, ignoring.}%
+      #2%
+    }{%
+      \textcolor{termref}{\textit{\hyperref[\lab]{#2}}}%
+    }%
+  }
+  \makeatother
+  \def\pointboxwidth{1em}
+  \newcommand\qpoint[1]{%
+    ~\hfill\makebox[\pointboxwidth][c]{\textbf{[#1]}}%
+  }
+  \newcommand\point[1]{%
+    \makebox[\pointboxwidth][c]{\textcolor{correct}{#1$'$}}%
+  }
+  \newcommand\OR{%
+    \textbf{\textcolor{correct}{or}}
+  }
+  \newcommand\NOT{%
+    \textbf{\textcolor{not}{NOT}}
+  }
+  \newcommand\AVOID{%
+    \textit{\textcolor{not}{Avoid}}
+  }
+
+  \setlength{\parindent}{0pt}
+  \setlength{\parskip}{\baselineskip}
+  \setlist[itemize]{itemsep=0.5\baselineskip, topsep=0pt}
+
+  {
+    \begin{tikzpicture}[remember picture,overlay,anchor=north west,font=\normalsize]
+      \coordinate (right bottom) at ([yshift=-2em]current page.north east);
+      \coordinate (left top) at (current page.north west);
+      \coordinate (right top) at (current page.north east);
+      \path let \p1 = (right bottom), \p2 = (current page.north west) in
+        coordinate (left bottom) at (\x2, \y1);
+
+      \path (left top) -- (left bottom)
+        node[midway, right, text=theme, align=left, xshift=1em]
+          {Version 1 --- s/w 17/16/15 \checkmark}
+        -- (right bottom) -- (right top)
+        node[midway, left, text=white, align=right, xshift=-1em](mw)
+          {\textbf{\raisebox{-1pt}{Mao Wtm} \ccbysa}}
+        node[below left=0 of mw](mwne) {};
+
+      \path (left bottom) -- (right bottom)
+        node[midway, below=4\baselineskip](titlepos) {};
+
+      \path let \p1 = (mwne), \p2 = (right bottom) in coordinate (mw left bottom) at (\x1, \y2);
+
+      \begin{scope}[on background layer]
+        \fill[fill=theme, opacity=0.1] (left top) rectangle (mw left bottom);
+        \fill[fill=theme] (mw left bottom) rectangle (right top);
+      \end{scope}
+
+      \node[anchor=north, font=\LARGE](title) at (titlepos)
+        {Advanced \textbf{\textcolor{theme}{Physics II}} \textit{Notes}};
+      \node[below=\baselineskip, font=\normalsize, align=center, inner sep=0.5em, text=black, text width=0.8\paperwidth](subtitle) at (title)
+        {%
+          Syllabus notes for the Advanced Physics 2 course material
+          \vspace{1em} \\*
+          Containing \total{question} individual topic dotpoints from official course material
+          PHYS1220
+          Semester 2, 2019
+          The University of Newcastle%
+        };
+      \node[below=2.8\baselineskip, font=\footnotesize, align=center](author) at (subtitle)
+        {Mr. Jed Moody <Jed.Moody@uon.edu.au>};
+
+      \node[below=4\baselineskip, align=center, text width=0.7\paperwidth, draw=theme, inner sep=2em, text=theme](example) at (author)
+        {%
+          \color{theme}%
+          Content is currently unfinished.\\*
+          \tableofcontents%
+        };
+
+      \path (current page.south west) -- (current page.south east)
+        node[midway, above=\baselineskip, align=center, text width=0.95\paperwidth] at (example)
+          {\ccbysa \\* \footnotesize This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. \\
+            Produced with \LaTeX{} via TeXmaker
+            Source available at \url{https://github.com/micromaomao/A-Physics-Definitive} \\
+            This is \textbf{not} a CIE official document.};
+    \end{tikzpicture}
+  }
+
+  \clearpage
+
+  \input{preface.tex}
+  \input{integratedphysics.tex}
+  \input{electromagnetism.tex}
+  \input{optics.tex}
+  \input{quantum.tex}
+  \input{nuclear.tex}
+
+  \printindex
+\end{document}

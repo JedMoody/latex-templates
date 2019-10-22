@@ -1,0 +1,310 @@
+\defcatagory{Dynamics and Energy}
+
+\begin{question}%
+  \qtitle{Define \term{speed}}\qpoint{1}
+
+  $\frac{\text{change in distance}}{\text{change in time}}$ \OR $\frac{\text{distance}}{\text{time}}$~\hfill\point{1}\vspace{0.5em}\\*
+  \AVOID `distance over time'\\*
+  \NOT `change of distance \textit{with} time'
+\end{question}
+
+\begin{question}%
+  \qtitle{Define \term{velocity}}\qpoint{1}
+
+  rate of change of \refterm{displacement} \OR $\frac{\text{change in displacement}}{\text{time (taken)}}$~\hfill\point{1}\\*
+  \NOT rate of change of displacement per unit time\\*
+  \AVOID `displacement over time'\\*
+  \NOT `change of displacement \textit{with} time'\\*
+  \NOT something with `distance'\\*
+  \NOT displacement per second (just like \NOT `meter per time')
+
+  Not to be confused with \refterm{speed}.
+\end{question}
+
+\begin{question}%
+  \qtitle{Define \term{acceleration}}\qpoint{1}
+
+  rate of change of \refterm{velocity} \OR $\frac{\text{change in \refterm{velocity}}}{\text{time (taken)}}$~\hfill\point{1}\\*
+  \NOT rate of change of velocity per unit time\\*
+  \NOT something with `speed'
+\end{question}
+
+\begin{question}%
+  \qtitle{Define \term{force}}\qpoint{1}
+
+  Rate of change of \refterm{momentum}~\hfill\point{1}\\*
+  \NOT $F = ma$ or ``$\text{mass} \times \text{\refterm{acceleration}}$''\\*
+  Definitely \NOT ``a push or pull''--this is primary grade stuff.
+\end{question}
+
+\begin{question}%
+  \qtitle{Define \term{power}}\qpoint{1}
+
+  $\frac{\text{\refterm{work} (done)}}{\text{time (taken)}}$ \OR $\frac{\text{\refterm{energy} transferred}}{\text{time (taken)}}$ \OR rate of \refterm{work} done~\hfill\point{1} \vspace{0.5em}\\*
+  \NOT $\frac{\text{\refterm{energy}}}{\text{time}}$ \\*
+  \AVOID `in a certain time' / `unit of time' \\*
+  \AVOID `over time'
+\end{question}
+
+\begin{question}%
+  \qtitle{Define \term{work} done}\qpoint{2}
+
+  $\text{\refterm{force}} \times \text{distance moved (by force)}$~\hfill\point{1}\\*
+  in the direction of the force~\hfill\point{1}
+\end{question}
+
+\begin{question}%
+  \qtitle{Explain what is meant by \term{kinetic energy}.}\qpoint{1}
+
+  energy/ability to do work a object/body/mass has due to its speed\allowbreak/velocity\allowbreak/motion\allowbreak/movement~\hfill\point{1}
+\end{question}
+
+\begin{question}%
+  \qtitle{Define \term{potential energy}}\qpoint{1}
+
+  Stored energy available to do work~\hfill\point{1}\\*
+  \NOT description of any specific type of energy e.g. \refterm[gravitational potential energy]{gravitational}
+\end{question}
+
+\begin{question}%
+  \qtitle{Define \term{gravitational potential energy}}\qpoint{1}
+
+  Energy due to height/position of mass \OR distance from mass \OR
+  moving mass from one point to another.~\hfill\point{1}\\*
+  \NOT about `height of a body above the Earth'\\*
+  \NOT about gravitational potential
+\end{question}
+
+\begin{question}%
+  \qtitle{Define \term{elastic potential energy}}\qpoint{1}
+
+  Energy (stored) due to deformation/stretching/compressing/change in shape/size~\hfill\point{1}\\*
+  \NOT `the energy stored in an elastic body' without mentioning deformation\\*
+  \NOT any formula
+\end{question}
+
+
+\begin{question}%
+  \qtitle{State \term{Hooke's law}.}\qpoint{1}
+
+  force/load is proportional to extension/compression (provided proportionality limits not exceeded)~\hfill\point{1}
+\end{question}
+
+\begin{question}%
+  \qtitle{Define the \term{Young modulus}}\qpoint{1}
+
+  $\frac{\text{\refterm{stress}}}{\text{\refterm{strain}}}$~\hfill\point{1}
+\end{question}
+
+\begin{figure}[h]%
+  \figureruletop
+
+  \centering\begin{tikzpicture}
+    \coordinate (topright) at (100mm, 100mm);
+    \draw[help lines, color=gray!60, thin] (0, 0) grid[step=2mm] (topright);
+    \path[draw, ->, thick] let \p1 = (topright) in (0, 0) -- (\x1, 0) -- ++(2mm, 0) node [pos=1, right] {$\frac{x}{\SI{}{cm}}$};
+    \path[draw, ->, thick] let \p1 = (topright) in (0, 0) -- (0, \y1) -- ++(0, 2mm) node [pos=1, above] {$\frac{F}{\SI{}{N}}$};
+    \foreach \y [evaluate=\y as \yN using \y/10] in {0,10,...,90} {\path[xshift=-1mm, thick, draw, x={(1mm, 0)}, y={(0, 1mm)}] (0, \y) -- ++(2, 0) node[left, pos=0] {\pgfmathprintnumber{\yN}};}
+    \foreach \x [evaluate=\x as \xcm using \x/10] in {0,10,...,90} {\path[yshift=-1mm, thick, draw, x={(1mm, 0)}, y={(0, 1mm)}] (\x, 0) -- ++(0, 2) node[below, pos=0] {\pgfmathprintnumber{\xcm}};}
+    \path[draw, thick] (0, 15mm) -- (100mm, 90mm);
+  \end{tikzpicture}
+
+  \caption{Figure for question~\ref{q:fx-graph}}
+  \label{fig:fx-graph}
+
+  \figureruletbottom
+\end{figure}
+
+\begin{question}%
+  \label{q:fx-graph}%
+  \qtitle{Use data from \textit{<some $F / x\ \text{(extension)}$ graph>} (figure~\ref{fig:fx-graph}) to show that the spring obeys \refterm{Hooke's law} for this range of extensions / compression.}\qpoint{2}
+
+  two values of $F/x$ are calculated which are the same\\*
+  \OR ratio of two forces and the ratio of the corresponding two extensions are calculated which are the same\\*
+  \OR gradient of graph line calculated and coordinates of one point on the line used with straight line equation $F = mx + c$ to show $c = 0$~\hfill\point{1}
+
+  (so) force is proportional to extension (and so \refterm{Hooke's law} obeyed)~\hfill\point{1}
+
+  \NOT straight line $\Rightarrow$ Hooke's law obeyed, since line must cross origin.
+\end{question}
+
+\begin{question}%
+  \qtitle{Describe how to determine whether the extension of the spring is \term{elastic}.}\qpoint{1}\\*
+  \OR\\*
+  \qtitle{State how you would check that the spring has not exceeded its \term{elastic limit}}\qpoint{1}
+
+  remove the force/masses and if the spring returns to its original length its an elastic extension.~\hfill\point{1}\\*
+  \NOT something about the extension being proportional to the force.
+\end{question}
+
+\begin{question}%
+  \qtitle{For the following scenario, state and explain the changes in energy that occur.}
+
+  \begin{itemize}
+    \item [(a)] Stuff falls through liquid:\qpoint{2}
+
+      decrease in \refterm{gravitational potential energy} due to decrease in height (since $E_p = mgh$)\\*
+      increase in \refterm{thermal energy} due to \refterm{work} done against \refterm{viscous drag}\\*
+      loss/change of (total) $E_p$ equal to gain/change in \refterm{thermal energy}\\*
+      Any \point{2} points.
+  \end{itemize}
+\end{question}
+
+\begin{question}%
+  \qtitle{State the principle of \term{conservation of momentum} (linear momentum)}\qpoint{2}
+
+  Sum/total \refterm{momentum} is constant \OR before = after~\hfill\point{1}\\*
+  for an isolated system \OR with no (resultant) external force~\hfill\point{1}
+\end{question}
+
+\begin{question}%
+  \qtitle{Explain what is meant by particles colliding \termnoindex[elastic collision]{elastically}\index{elastic collision}}\qpoint{1}
+
+  the total \refterm{kinetic energy} before (the collision) is equal to the total \refterm{kinetic energy} after (the collision)~\hfill\point{1}
+\end{question}
+
+\begin{question}%
+  \qtitle{Define \term{strain}}\qpoint{1}
+
+  $\frac{\text{extension}}{\text{\textbf{original} length}}$~\hfill\point{1}
+\end{question}
+
+\begin{question}%
+  \qtitle{\termnoindex[stress]{Stress}\index{stress}\ldots}
+
+  Quantity: $\frac{\text{\refterm{force}}}{\text{\textbf{cross-sectional} area}}$~\hfill\point{1}
+
+  Unit: \SI{}{Pa} = $\frac{\text{\refterm{force}}}{\text{area}}$~\hfill\point{1}
+\end{question}
+
+\begin{question}%
+  \qtitle{State the two conditions for a system/object to be in \term{equilibrium}}\qpoint{2}
+
+  resultant \refterm{force} (in any direction) is zero~\hfill\point{1}\\*
+  resultant \refterm{torque}/\refterm{moment} (about any point) is zero \OR sum of clockwise moment and sum of anticlockwise moment is zero~\hfill\point{1}\\*
+  \NOT `no turning effect'\\*
+  \NOT `the forces are balanced'/`cancel'\\*
+  \NOT `no forces acting'
+\end{question}
+
+\begin{question}%
+  \qtitle{Define the \term{torque} of a \refterm{couple}}\qpoint{2}
+
+  Torque is the product of one of the \refterm[force]{forces} ($F$) and the perpendicular distance ($d$) between forces.
+
+  $\text{One of the forces} \times \text{distance}$ \point{1}\\*
+  Perpendicular \point{1}
+
+  \begin{tikzpicture}
+    \coordinate (force vector) at (1, 2);
+    \coordinate (origin A) at (0, 0);
+    \coordinate (origin B) at ($(origin A)!1!-90:($(origin A) + (force vector)$)$);
+
+    \path[->, draw, line width=0.1em] (origin A) -- ++(force vector) node[label=left:$F$, pos=1] {};
+    \path[->, draw, line width=0.1em] (origin B) -- ++($-1*(force vector)$) node[label=right:$F$, pos=1] {};
+    \path[draw=gray, dashed, thin] ($(origin A)!-2em!(origin B)$) -- ($(origin B)!-2em!(origin A)$);
+    \path[draw=theme, |<->|, thick] (origin A) -- (origin B) node[midway, label={[theme]above:$d$}] {};
+
+    \path[draw] let \p0 = (origin A) in let \p1 = ($(\p0)!0.8em!($(\p0) + (force vector)$)$), \p2 = ($(origin A)!0.8em!(origin B)$) in
+      (\p1) -- ($(\p1) + (\p2) - (\p0)$) -- (\p2);
+  \end{tikzpicture}
+\end{question}
+
+\begin{question}%
+  \qtitle{Define the \term{moment} of a \refterm{force}}\qpoint{1}
+
+  $\text{\refterm{force}}\ ($F$) \times \text{\textbf{perpendicular} distance}\ ($d$)\\* \text{(of line of action of force) to/from a point / pivot}$~\hfill\point{1}
+
+  \begin{tikzpicture}
+    \coordinate (force origin) at (6, 0);
+    \coordinate (force vector) at (0.5, 1.5);
+    \path[fill=gray, draw=black, thick] (-1mm, -1mm) rectangle ($(1mm, 1mm) + (force origin)$);
+    \path[->, draw, line width=0.1em] (force origin) -- ++(force vector) node[pos=1, label=left:{$F$}] {};
+    \coordinate (prep intersect) at ($($(force origin) + (force vector)$)!(0, 0)!(force origin)$);
+    \path[dashed, thin, draw] ($(prep intersect)!-1em!(force origin)$) -- (force origin);
+    \path[thick, draw=theme, >={Triangle[fill=theme]}, |<->|] (prep intersect) -- (0, 0) node[midway, label={[theme]below:{$d$}}] {};
+
+    % Right angle mark
+    \path[draw] let \p0 = (prep intersect) in let \p1 = ($(\p0)!0.8em!(0, 0)$), \p2 = ($(\p0)!0.8em!(force origin)$) in
+      (\p1) -- ($(\p1) + (\p2) - (\p0)$) -- (\p2);
+  \end{tikzpicture}
+\end{question}
+
+\begin{question}%
+  \qtitle{Explain what is meant by \term{centre of gravity}}\qpoint{1}
+
+  the point from where (all) the weight (of a body) seems to act~\hfill\point{1}\\*
+  \NOT weight concentrated on this point\\*
+  \NOT the point where mass acts
+\end{question}
+
+\begin{question}%
+  \qtitle{Define \term{pressure}}\qpoint{1}
+
+  $\frac{\text{\refterm{force}}}{\text{area (normal to the force)}}$~\hfill\point{1}\\*
+  \NOT `cross-sectional area'
+\end{question}
+
+\begin{question}%
+  \qtitle{Explain the origin of \term{upthrust} for a body in liquid}\qpoint{2}
+
+  Pressure / force up on bottom \textbf{greater} than pressure / force down on top~\hfill\point{2}
+
+  \point{1} for pressure on bottom \textbf{different} from pressure on top \OR pressure changes with depth.\\*
+  \NOT having less density than the liquid.
+\end{question}
+
+\begin{question}%
+  \qtitle{State	Newton's $n$th law of motion\ldots}
+
+  \begin{itemize}
+    \item \termnoindex[newton 1st]{$n=1$}\index{Newton's first law}: a body/mass/object continues (at rest or) at constant/uniform \refterm{velocity} unless acted on by a \textbf{resultant} \refterm{force}~\hfill\point{1}\\*
+      \NOT `constant speed' without mentioning straight line motion\\*
+      \NOT `uniform motion'
+
+    \item \termnoindex[newton 2nd]{$n=2$}\index{Newton's second law}: See definition of \refterm{force}
+
+    \item \termnoindex[newton 3rd]{$n=3$}\index{Newton's third law}: force on body A is equal in magnitude to force on body B (from A) \point{1} , in opposite directions \point{1} , of the same kind. \point{1}
+  \end{itemize}
+\end{question}
+
+\def\someball{\textit{<some ball or stuff>}}%
+\def\somefloor{\textit{<some floor, wall or stuff>}}%
+\begin{question}%
+  \qtitle{State and explain whether momentum is conserved during the collision of \someball{} with \somefloor{}}\qpoint{2}
+
+    there is a change/gain in momentum of \somefloor{}~\hfill\point{1}\\*
+    there is an equal (and opposite) change to the momentum of \someball{} so momentum is conserved~\hfill\point{1}
+
+    \OR
+    
+    change of (total) momentum of \somefloor{} and \someball{} is zero\\*
+    \OR (total) momentum of \someball{} and \somefloor{} before is equal to the (total) momentum after~\hfill\point{1}\\*
+    so momentum is conserved~\hfill\point{1}
+
+    \NOT not conserved for any reason such as an open system.
+\end{question}
+
+\begin{question}%
+  \qtitle{Explain how the collision of two objects can support \refterm[newton 3rd]{Newton's third law}}\qpoint{2}
+
+  change in \refterm{momentum} equal (and opposite) for the two objects~\hfill\point{1}
+
+  \refterm{force} is change in \refterm{momentum} over time and time (of collision) is the same\\*
+  hence force on the two objects are equal and opposite as for \refterm[newton 3rd]{Newton's third law}.~\hfill\point{1}
+\end{question}
+
+\begin{question}%
+  \qtitle{In practice, \refterm{air resistance} is not negligible. State and explain the effect of \refterm{air resistance} on the time taken for a ball thrown upward to reach maximum height.}\qpoint{2}
+
+  deceleration is greater/resultant force (\refterm{weight} and \refterm{friction} force) is greater~\hfill\point{1}\\*
+  take less time~\hfill\point{1}
+\end{question}
+
+\begin{question}%
+  \qtitle{Use the \term{kinetic model} to explain the \refterm{pressure} exerted by gases to wall of container}\qpoint{3}
+
+  molecule collides with wall/container and there is a change in \refterm{momentum}~\hfill\point{1}\vspace{0.5em}\\*
+  $\frac{\text{change in \refterm{momentum}}}{\text{time}}$ is \refterm{force} \OR $\Delta p = Ft$.~\hfill\point{1}\vspace{0.5em}\\*
+  many/all/sum of molecular collisions over surface/area of container produces pressure~\hfill\point{1}
+\end{question}
